@@ -77,6 +77,7 @@
   z-index: 1000;
 }
 
+/* Modal Backdrop */
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -127,12 +128,14 @@
 .modal-actions .secondary {
   background: #eee;
 }
+
 .countdown {
   font-size: 32px;
   font-weight: bold;
   color: #d32f2f;
   margin: 12px 0;
 }
+
 .auth {
   height: 100vh;
   display: flex;
@@ -167,7 +170,8 @@
   margin-bottom: 10px;
   padding: 8px;
 }
-/* LOGIN SCREEN */
+
+/* LOGIN SCREEN - ORIGINAL USER APP */
 
 .login-screen {
   height: 100vh;
@@ -235,6 +239,7 @@
   color: #006d77;
   font-weight: 500;
 }
+
 /* HOSPITAL ADMIN HOME */
 
 .hospital-home {
@@ -270,55 +275,208 @@
   padding: 12px;
   margin-bottom: 12px;
 }
+
 .login-admin {
   margin-top: 16px;
   color: #1d2366;
   font-weight: 500;
   cursor: pointer;
 }
-/* =========================
-   HOSPITAL ADMIN DASHBOARD
-========================= */
-/* SOS + EMR DEMO */
 
-.map-preview {
-  height: 120px;
-  background: #eef4fa;
-  border-radius: 8px;
+/* =================================================================
+   HOSPITAL ADMIN PREMIUM STYLES (SCOPED)
+   ================================================================= */
+/* Importing font for Admin section specifically if needed, but avoiding global overwrite */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --admin-primary: #0077b6;
+  --admin-primary-dark: #023e8a;
+  --admin-bg-light: #f8f9fa;
+  --admin-text-dark: #1b263b;
+  --admin-white: #ffffff;
+}
+
+/* Admin Login Screen */
+.admin-login-screen {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, var(--admin-primary-dark) 0%, var(--admin-primary) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Abstract Background Circles */
+.admin-login-screen::before,
+.admin-login-screen::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 0;
+}
+
+.admin-login-screen::before {
+  width: 300px;
+  height: 300px;
+  top: -50px;
+  right: -50px;
+}
+
+.admin-login-screen::after {
+  width: 200px;
+  height: 200px;
+  bottom: 50px;
+  left: -50px;
+}
+
+.admin-login-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+  z-index: 1;
+}
+
+.logo-placeholder {
+  font-size: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 12px 0;
-  font-size: 14px;
-  color: #1d2366;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-.emr-card {
-  background: #f6f8fb;
-  padding: 12px;
-  border-radius: 8px;
-  margin: 12px 0;
-  text-align: left;
-  font-size: 14px;
+.brand-title {
+  color: var(--admin-white);
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 12px;
+  letter-spacing: 0.5px;
+}
+
+.admin-login-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 40px 32px;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: 'Outfit', sans-serif;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--admin-text-dark);
+}
+
+.input-group input {
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  font-size: 15px;
+  background: var(--admin-bg-light);
+  transition: all 0.2s;
+}
+
+/* Animations */
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Updated Modals */
+.modal.sos-alert h3 {
+  color: #ef233c;
+}
+
+.modal.emr-alert h3 {
+  color: #0077b6;
 }
 
 .map-preview {
-  height: 120px;
-  background: #eef4fa;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 12px 0;
-  font-size: 14px;
-  color: #1d2366;
+  height: 140px;
+  background: #e9ecef url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/World_map_blank_without_borders.svg/640px-World_map_blank_without_borders.svg.png') center/cover;
+  border-radius: 16px;
+  margin: 16px 0;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.map-preview::after {
+  content: '📍';
+  font-size: 32px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+  from {
+    transform: translate(-50%, -50%);
+  }
+
+  to {
+    transform: translate(-50%, -65%);
+  }
 }
 
 .emr-card {
-  background: #f6f8fb;
-  padding: 12px;
-  border-radius: 8px;
-  margin: 12px 0;
+  background: #f8fafc;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
   text-align: left;
-  font-size: 14px;
 }

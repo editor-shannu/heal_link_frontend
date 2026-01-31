@@ -4,56 +4,27 @@ export default function HospitalHome() {
   const [showSOS, setShowSOS] = useState(false);
   const [showEMR, setShowEMR] = useState(false);
 
-  // Global click listener (for demo)
+  // Trigger SOS popup immediately upon dashboard load
   useEffect(() => {
-    const handleClick = () => {
-      if (!showSOS && !showEMR) {
-        setShowSOS(true);
-      }
-    };
-
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, [showSOS, showEMR]);
+    setShowSOS(true);
+  }, []);
 
   return (
     <div className="hospital-home">
-      {/* DEBUG PROOF */}
-      <div
-        style={{
-          position: "fixed",
-          top: 10,
-          left: 10,
-          background: "red",
-          color: "white",
-          padding: "6px",
-          zIndex: 9999
-        }}
-      >
-        HOSPITAL HOME LOADED
-      </div>
-
-      <h2 className="hospital-title">City Care Hospital</h2>
-      <p>Hospital Admin Dashboard</p>
-      <p style={{ fontSize: "12px", opacity: 0.6 }}>
-        (Click anywhere to simulate SOS request)
-      </p>
+      <header className="header">
+        <h2 className="hospital-title">City Care Hospital</h2>
+        <p style={{ color: '#64748b' }}>Hospital Admin Dashboard</p>
+      </header>
 
       {/* SOS REQUEST POPUP */}
       {showSOS && (
         <div className="modal-backdrop">
-          <div
-            className="modal"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="modal sos-alert">
             <h3>🚨 SOS REQUEST</h3>
 
-            <p><strong>Patient Location</strong></p>
-            <p>MG Road, Bengaluru</p>
+            <p><strong>Patient Location</strong><br />MG Road, Bengaluru</p>
 
-            <div className="map-preview">
-              📍 Map Preview
-            </div>
+            <div className="map-preview"></div>
 
             <div className="modal-actions">
               <button
@@ -80,24 +51,21 @@ export default function HospitalHome() {
       {/* EMR RECEIVED POPUP */}
       {showEMR && (
         <div className="modal-backdrop">
-          <div
-            className="modal"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="modal emr-alert">
             <h3>📄 EMR RECEIVED</h3>
 
             <p>Patient Emergency Medical Record received.</p>
 
             <div className="emr-card">
-              <p><strong>Name:</strong> Ravi Kumar</p>
-              <p><strong>Blood Group:</strong> B+</p>
-              <p><strong>Allergies:</strong> Penicillin</p>
-              <p><strong>Conditions:</strong> Diabetes</p>
+              <p><strong>Name</strong> Ravi Kumar</p>
+              <p><strong>Blood Group</strong> B+</p>
+              <p><strong>Allergies</strong> Penicillin</p>
+              <p><strong>Conditions</strong> Diabetes</p>
             </div>
 
             <div className="modal-actions">
-              <button className="danger">Open</button>
-              <button className="secondary">Share</button>
+              <button className="danger" onClick={() => alert("Opening Patient File...")}>Open</button>
+              <button className="secondary" onClick={() => alert("Share Link Copied!")}>Share</button>
             </div>
           </div>
         </div>
