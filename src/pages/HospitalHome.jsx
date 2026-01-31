@@ -17,12 +17,17 @@ export default function HospitalHome() {
       </header>
 
       {/* SOS REQUEST POPUP */}
+      {/* SOS REQUEST POPUP */}
       {showSOS && (
         <div className="modal-backdrop">
-          <div className="modal sos-alert">
-            <h3>🚨 SOS REQUEST</h3>
+          <div className="modal sos-alert" style={{ maxWidth: '400px', padding: '24px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginBottom: '8px' }}>
+              <span style={{ fontSize: '24px' }}>🚨</span>
+              <h3 style={{ margin: 0, color: '#ef233c', fontSize: '20px' }}>SOS REQUEST</h3>
+            </div>
 
-            <p><strong>Patient Location</strong><br />MG Road, Bengaluru</p>
+            <p style={{ fontSize: '15px', color: '#1d2366', fontWeight: 600, marginBottom: '4px' }}>Patient Location</p>
+            <p style={{ fontSize: '14px', color: '#64748b', marginBottom: '16px' }}>MG Road, Bengaluru</p>
 
             <div className="map-preview"></div>
 

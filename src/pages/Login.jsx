@@ -7,14 +7,14 @@ export default function Login() {
 
   return (
     <div className="login-screen">
-      {/* Top Image */}
-      <img src={loginImg} alt="Login" className="login-image" />
+      {/* Top Section with Illustration */}
+      <div className="login-image-container">
+        <img src={loginImg} alt="Doctors" className="login-illustration" />
+      </div>
 
-      {/* Logo */}
-      <img src={logoImg} alt="Heal Link Logo" className="login-logo" />
-
-      {/* Bottom Card */}
+      {/* Bottom Card Section */}
       <div className="login-card">
+        {/* Logo if needed above title, but design shows title mainly */}
         <h1 className="login-title">Heal Link</h1>
         <p className="login-subtitle">
           Connecting you to better healthcare!
@@ -24,17 +24,18 @@ export default function Login() {
           className="login-button"
           onClick={() => navigate("/home")}
         >
-          LOG IN
+          LOGIN
         </button>
-<p onClick={() => navigate("/hospital-login")}>
-  Hospital Admin? Login here
-</p>
 
         <p
-          className="login-signup"
-          onClick={() => navigate("/signup")}
+          style={{ marginBottom: '24px', cursor: 'pointer', color: '#1d2366', fontSize: '14px', fontWeight: 500 }}
+          onClick={() => navigate("/hospital-login")}
         >
-          Don’t have an account? <span>Sign up!</span>
+          Hospital Admin? Login here
+        </p>
+
+        <p className="login-signup" onClick={() => navigate("/signup")}>
+          Don't have an account? <span>Sign up!</span>
         </p>
       </div>
     </div>

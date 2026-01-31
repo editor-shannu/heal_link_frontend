@@ -61,6 +61,25 @@
   justify-content: space-around;
   align-items: center;
   z-index: 999;
+  border-top: 1px solid #eee;
+}
+
+.tab-bar span {
+  font-size: 24px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.tab-bar span.active {
+  color: #3bacd6;
+  font-size: 28px;
+  background: #e0f2f1;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 .sos {
@@ -434,49 +453,365 @@
   }
 }
 
-/* Updated Modals */
-.modal.sos-alert h3 {
-  color: #ef233c;
+/* =================================================================
+   USER APP REDESIGN (Heal Link)
+   ================================================================= */
+
+:root {
+  --primary-blue: #3bacd6;
+  --dark-blue: #1d2366;
+  --text-grey: #64748b;
+  --card-bg: #ffffff;
 }
 
-.modal.emr-alert h3 {
-  color: #0077b6;
+body {
+  font-family: 'Outfit', sans-serif;
+  /* Ensuring sleek font */
+  background-color: var(--admin-bg-light);
 }
 
-.map-preview {
-  height: 140px;
-  background: #e9ecef url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/World_map_blank_without_borders.svg/640px-World_map_blank_without_borders.svg.png') center/cover;
-  border-radius: 16px;
-  margin: 16px 0;
+/* FRAME 1: LOGIN SCREEN */
+.login-screen {
+  height: 100vh;
+  background: var(--primary-blue);
   position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.map-preview::after {
-  content: '📍';
-  font-size: 32px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: bounce 1s infinite alternate;
+.login-image-container {
+  width: 100%;
+  height: 40%;
+  padding-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
-@keyframes bounce {
-  from {
-    transform: translate(-50%, -50%);
-  }
-
-  to {
-    transform: translate(-50%, -65%);
-  }
+.login-illustration {
+  max-width: 80%;
+  max-height: 100%;
 }
 
-.emr-card {
-  background: #f8fafc;
+.login-card {
+  background: white;
+  width: 100%;
+  height: 60%;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  padding: 40px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-title {
+  font-size: 36px;
+  color: var(--dark-blue);
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.login-subtitle {
+  color: #006d77;
+  margin-bottom: 40px;
+  font-size: 14px;
+}
+
+.login-button {
+  background: var(--dark-blue);
+  color: white;
+  width: 100%;
+  max-width: 280px;
   padding: 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.login-signup {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.login-signup span {
+  color: #006d77;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* FRAME 2: HOME DASHBOARD */
+.home-container {
+  padding: 20px;
+  padding-bottom: 80px;
+  /* Space for bottom tab bar */
+  background: #fff;
+  min-height: 100vh;
+}
+
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.user-greeting {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #eee;
+  object-fit: cover;
+}
+
+.greeting-text h3 {
+  color: var(--dark-blue);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.greeting-text p {
+  color: #006d77;
+  font-size: 13px;
+}
+
+.search-icon {
+  font-size: 20px;
+  color: #006d77;
+}
+
+.hero-card {
+  background: #39aed9;
+  /* Lighter blue */
+  border-radius: 24px;
+  padding: 24px;
+  color: white;
+  margin-bottom: 20px;
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-text {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.daily-wellness-card {
+  background: #39aed9;
+  border-radius: 24px;
+  padding: 20px;
+  color: white;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.daily-wellness-card h4 {
+  font-size: 12px;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
+
+.appointment-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+.feature-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.feature-header h3 {
+  color: var(--dark-blue);
+  font-size: 16px;
+}
+
+.see-all {
+  color: #aaa;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* FRAME 3: RECOMMENDATIONS */
+.recommendation-container {
+  padding: 20px;
+  background: #fff;
+  min-height: 100vh;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.back-btn {
+  font-size: 24px;
+  color: var(--dark-blue);
+  cursor: pointer;
+}
+
+.page-title {
+  color: var(--dark-blue);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.more-options {
+  margin-left: auto;
+  color: #aaa;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+}
+
+.filter-tab {
+  font-size: 13px;
+  color: #aaa;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+}
+
+.filter-tab.active {
+  color: var(--dark-blue);
+  font-weight: 700;
+}
+
+/* Custom Component Cards */
+.hospital-item-card {
+  background: #f1f5f9;
   border-radius: 16px;
-  border: 1px solid #e2e8f0;
-  text-align: left;
+  padding: 12px;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.hospital-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  background: #bdc3c7;
+  object-fit: cover;
+}
+
+.hospital-info {
+  flex: 1;
+}
+
+.hospital-name {
+  color: var(--dark-blue);
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.hospital-imgs-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hospital-meta {
+  font-size: 12px;
+  color: #006d77;
+  margin-bottom: 8px;
+}
+
+.rating {
+  color: #fbbf24;
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.service-icons {
+  display: flex;
+  gap: 8px;
+}
+
+
+/* User EMR Form Modal */
+.emr-form-modal {
+  width: 90%;
+  max-width: 400px;
+  max-height: 90vh;
+  /* Prevent overflow on small screens */
+  overflow-y: auto;
+  /* Scroll if content is too tall */
+  padding: 24px;
+}
+
+.emr-title {
+  color: #ef233c;
+  /* Red color as per image */
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.emr-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.emr-form input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  /* Simple grey border */
+  border-radius: 4px;
+  width: 100%;
+  font-size: 14px;
+  color: #555;
+}
+
+.save-emr-btn {
+  margin-top: 8px;
+  background: white;
+  color: #333;
+  border: 1px solid #333;
+  padding: 8px 16px;
+  width: fit-content;
+  align-self: center;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
 }
